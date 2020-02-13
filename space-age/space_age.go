@@ -4,7 +4,7 @@ package space
 // identify orbit system
 type Planet string
 
-var earthOrbitTime float64 = 31557600
+const earthOrbitTime = 31557600
 
 var orbitTimes = map[Planet]float64{
 	Planet("Earth"):   earthOrbitTime,
@@ -20,8 +20,5 @@ var orbitTimes = map[Planet]float64{
 // Age calculates current age according to time lived
 // in seconds evaluated on different orbit systems
 func Age(secondsSinceBirth float64, planetName Planet) float64 {
-	var ageInPlanet float64
-	orbitTime := orbitTimes[planetName]
-	ageInPlanet = secondsSinceBirth / orbitTime
-	return ageInPlanet
+	return secondsSinceBirth / orbitTimes[planetName]
 }
